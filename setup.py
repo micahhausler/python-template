@@ -41,7 +41,7 @@ setup(
     long_description=open('README.rst').read(),
     url='https://github.com/ambitioninc/{{ repo_name }}',
     author='{{ author_name }}',
-    author_email='opensource@ambition.com',
+    author_email='{{ author_email }}',
     keywords='',
     packages=find_packages(),
     classifiers=[
