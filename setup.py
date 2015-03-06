@@ -23,6 +23,17 @@ tests_require = [
     'nose>=1.3.0',
 ]
 
+extras_require = {
+    'test': tests_require,
+    'packaging': ['wheel'],
+    'docs': ['Sphinx>=1.2.2', 'sphinx_rtd_theme'],
+}
+
+everything = set()
+for deps in extras_require.values():
+    everything.update(deps)
+extras_require['all'] = list(everything)
+
 setup(
     name='{{ pypi_name }}',
     version=get_version(),
@@ -46,10 +57,6 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=tests_require,
-    extras_require={
-        'test': tests_require,
-        'packaging': ['wheel'],
-        'docs': ['Sphinx>=1.2.2', 'sphinx_rtd_theme'],
-    },
+    extras_require=extras_require,
     zip_safe=False,
 )
