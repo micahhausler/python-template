@@ -14,19 +14,18 @@ Development Setup
 -----------------
 To get all the development libraries, run::
 
-    $ pip install {{ pypi_name }}[all]
-
+    $ git clone git://github.com/{{ author_github }}/{{ repo_name }}.git
+    $ cd {{ repo_name }}
+    $ virtualenv env
+    $ . env/bin/activate
+    $ pip install -e .[all]
 
 Running the tests
 -----------------
 
 To get the source source code and run the unit tests, run::
 
-    $ git clone git://github.com/{{ author_github }}/{{ repo_name }}.git
-    $ cd {{ repo_name }}
-    $ virtualenv env
-    $ . env/bin/activate
-    $ pip install nose
+    $ pip install -e .[test]
     $ python setup.py install
     $ python setup.py nosetests
 
@@ -39,7 +38,7 @@ Code Quality
 
 For code quality, please run flake8::
 
-    $ pip install flake8
+    $ pip install -e .[test]
     $ flake8 .
 
 Code Styling
@@ -66,7 +65,7 @@ Building the docs
 
 When in the project directory::
 
-    $ pip install {{ pypi_name }}[docs]
+    $ pip install -e .[docs]
     $ python setup.py build_sphinx
     $ open docs/_build/html/index.html
 
@@ -80,5 +79,6 @@ Before a new release, please go through the following checklist:
 * Git tag the version
 * Upload to pypi::
 
-    pip install wheel
+    pip install -e .[packaging]
     python setup.py sdist bdist_wheel upload
+
