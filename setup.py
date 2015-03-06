@@ -39,7 +39,7 @@ setup(
     version=get_version(),
     description='',
     long_description=open('README.rst').read(),
-    url='https://github.com/ambitioninc/{{ repo_name }}',
+    url='https://github.com/{{ author_github }}/{{ repo_name }}',
     author='{{ author_name }}',
     author_email='{{ author_email }}',
     keywords='',
