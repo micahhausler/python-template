@@ -16,6 +16,9 @@ def get_version():
     else:
         raise RuntimeError('Unable to find version string in {0}.'.format(VERSION_FILE))
 
+install_requires = [
+]
+
 tests_require = [
     'coverage>=3.7.1',
     'flake8>=2.2.0',
@@ -29,7 +32,7 @@ extras_require = {
     'docs': ['Sphinx>=1.2.2', 'sphinx_rtd_theme'],
 }
 
-everything = set()
+everything = set(install_requires)
 for deps in extras_require.values():
     everything.update(deps)
 extras_require['all'] = list(everything)
@@ -46,14 +49,13 @@ setup(
     packages=find_packages(),
     classifiers=[
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
     license='MIT',
-    install_requires=[],
+    install_requires=install_requires,
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=tests_require,
